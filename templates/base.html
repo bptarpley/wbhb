@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>WBHB - Women in Book History Bibliography</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/dt-1.10.15/datatables.min.css"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <link href="{% static 'css/wbhb.css' %}" rel="stylesheet">
+    {% block css %}{% endblock %}
+    <style type="text/css">
+        #source-table_wrapper th {
+            padding: 10px;
+            font-size: 16px;
+            color: #FFFFFF;
+            background-color: rgb(148, 13, 26);
+        }
+
+        #source-table_wrapper th:first-child {
+            border-top-left-radius: 5px;
+        }
+
+        #source-table_wrapper th:last-child {
+            border-top-right-radius: 5px;
+        }
+
+        #source-table_wrapper th::after {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    {% block modals %}{% endblock %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-1">
+                <a href="http://www.womensbookhistory.org/"><img src="{% static 'img/logo.png' %}" class="img-responsive"/></a>
+            </div>
+            <div class="col-sm-7" style="vertical-align: middle;">
+                <h1 style="margin-top: 10px;">Women in Book History Bibliography</h1>
+            </div>
+            <div class="col-sm-4" style="vertical-align: text-bottom;">
+                <p class="text-right"><a href="http://www.womensbookhistory.org/">Back to main site</a></p>
+            </div>
+        </div>
+
+        {% block content %}{% endblock %}
+
+        <footer class="footer">
+            <p><a href="http://idhmc.tamu.edu">The Initiative for Digital Humanities, Media, and Culture</a> at Texas A&M University</p>
+        </footer>
+    </div>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/dt-1.10.15/datatables.min.js"></script>
+
+    {% block javascript %}{% endblock %}
+
+</body>
+</html>

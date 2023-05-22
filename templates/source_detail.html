@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row" style="margin-top: 20px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">{{ source.title }}</h2>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    {% if source.roleperson_set.all %}
+                        <li class="list-group-item">
+                            <dl class="dl-horizontal">
+                                {% for roleperson in source.roleperson_set.all %}
+                                    <dt>{{ roleperson.role }}</dt><dd>{{ roleperson.person }}</dd>
+                                {% endfor %}
+                            </dl>
+                        </li>
+                    {% endif %}
+                    {% if source.container or source.series_title or source.series_number or source.volume or source.volume_number or source.issue or source.edition %}
+                        <li class="list-group-item">
+                            <dl class="dl-horizontal">
+                                {% if source.container %}
+                                    <dt>Container</dt><dd>{{ source.container }}</dd>
+                                {% endif %}
+                                {% if source.series_title %}
+                                    <dt>Series Title</dt><dd>{{ source.series_title }}</dd>
+                                {% endif %}
+                                {% if source.series_number %}
+                                    <dt>Series Number</dt><dd>{{ source.series_number }}</dd>
+                                {% endif %}
+                                {% if source.volume %}
+                                    <dt>Volume</dt><dd>{{ source.volume }}</dd>
+                                {% endif %}
+                                {% if source.volume_number %}
+                                    <dt>Volume Number</dt><dd>{{ source.volume_number }}</dd>
+                                {% endif %}
+                                {% if source.issue %}
+                                    <dt>Issue</dt><dd>{{ source.issue }}</dd>
+                                {% endif %}
+                                {% if source.edition %}
+                                    <dt>Edition</dt><dd>{{ source.edition }}</dd>
+                                {% endif %}
+                            </dl>
+                        </li>
+                    {% endif %}
+                    {% if source.publisher or source.pub_year or source.pages or source.doi or source.formats.all %}
+                        <li class="list-group-item">
+                            <dl class="dl-horizontal">
+                                {% if source.publisher %}
+                                    <dt>Publisher</dt><dd>{{ source.publisher }}</dd>
+                                {% endif %}
+                                {% if source.pub_year %}
+                                    <dt>Publication Year</dt><dd>{{ source.pub_year.year }}</dd>
+                                {% endif %}
+                                {% if source.pages %}
+                                    <dt>Pages</dt><dd>{{ source.pages }}</dd>
+                                {% endif %}
+                                {% if source.doi %}
+                                    <dt>DOI</dt><dd>{{ source.doi }}</dd>
+                                {% endif %}
+                                {% if source.formats.all %}
+                                    <dt>Format(s)</dt>
+                                    <dd>
+                                    {% for format in source.formats.all %}
+                                        {{ format }}{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                    </dd>
+                                {% endif %}
+                            </dl>
+                        </li>
+                    {% endif %}
+                    {% if source.fields.all or source.locations.all or source.periods.all %}
+                        <li class="list-group-item">
+                            <dl class="dl-horizontal">
+                                {% if source.fields.all %}
+                                    <dt>Field(s)</dt>
+                                    <dd>
+                                    {% for field in source.fields.all %}
+                                        {{ field }}{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                    </dd>
+                                {% endif %}
+                                {% if source.locations.all %}
+                                    <dt>Location(s)</dt>
+                                    <dd>
+                                    {% for location in source.locations.all %}
+                                        {{ location }}{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                    </dd>
+                                {% endif %}
+                                {% if source.periods.all %}
+                                    <dt>Period(s)</dt>
+                                    <dd>
+                                    {% for period in source.periods.all %}
+                                        {{ period }}{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                    </dd>
+                                {% endif %}
+                            </dl>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="panel-footer">
+                <a href="/">Back to Bibliography</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
