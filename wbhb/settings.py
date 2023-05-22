@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('WBHB_SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [os.environ.get('WBHB_HOSTNAME', 'localhost')]
-
+SECURE_SSL_REDIRECT = True
 
 # Application definition
 
